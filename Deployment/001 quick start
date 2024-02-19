@@ -10,7 +10,7 @@ cd bin
 chmod a+x *.sh
 ./shutdown.sh
 # create user
-conf/tomcat-users.xml # copy and paste
+conf/tomcat-users.xml # copy and paste (can find hint when click cancel after seeing the login window)
 mvn install
 cd target -> find .war file
 deply .war file to Tomcat
