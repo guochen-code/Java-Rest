@@ -1,0 +1,86 @@
+(1) run local
+mvn install 
+mvn spring-boot:run
+
+(2) java -jar <.jar file>
+
+(3) download Tomcat
+cd bin
+./startup.sh
+chmod a+x *.sh
+./shutdown.sh
+# create user
+conf/tomcat-users.xml # copy and paste
+mvn install
+cd target -> find .war file
+deply .war file to Tomcat
+
+(4) EC2
+sudo yum update
+java -version
+yum list java*
+sudo yum install java-1.8.0
+# if you have multiple java installed, choose one
+sudo /usr/sbin/alternatives --config java # select one according to prompt
+sudo /usr/sbin/alternateives --config javac
+java -version
+
+sudo wget <link to tar file to download tomcat>
+sudo tar xvf <tar file> -C usr/share
+ls -lrt /usr/share
+sudo ln -s /usr/share/apache-tomcat-9.0.46 /usr/share/tomcat9 # apache-tomcat-9.0.46 is a long name, refer to it with a short name tomcat9
+
+sudo groupadd --system tomcat
+sudo useradd -d /usr/share/tomcat -r -s /bin/false -g tomcat tomcat
+sudo chown -R tomcat:tomcat /usr/share/apache-tomcat-9.0.46 # need use the long name for this command
+
+sudo vi /etc/systemd/system/tomcat9.service # copy and paste to allow auto start tomcat after machine reboot
+'''
+[Unit]
+Description=Tomcat Server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
+
+Environment=JAVA_HOME=/usr/lib/jvm/jre
+Environment='JAVA_OPTS=-Djava.awt.headless=true'
+Environment=CATALINA_HOME=/usr/share/tomcat9
+Environment=CATALINA_BASE=/usr/share/tomcat9
+Environment=CATALINA_PID=/usr/share/tomcat9/temp/tomcat.pid
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
+ExecStart=/usr/share/tomcat9/bin/catalina.sh start
+ExecStop=/usr/share/tomcat9/bin/catalina.sh stop
+
+[Install]
+WantedBy=multi-user.target
+'''
+sudo systemctl daemon-reload
+sudo systemctl enable tomcat9
+sudo systemctl start tomcat9
+
+# configure remote access to manager app
+# problem: you cannot access manager app UI via your local computer
+sudo vi /usr/share/tomcat9/webaps/manager/META-INF/context.xml
+# type i key in keyboard to enable insert mode to change the file
+# make modification
+
+sudo systemctl restart tomcat
+# add user like above
+sudo vi /usr/share/tomcat/conf/tomcat-users.xml
+# after modification
+sudo systemctl restart tomcat9
+
+# MYSQL
+sudo yum mysql-server
+sudo service mysqld start
+sudo service mysqld status
+sudo /usr/bin/mysql_secure_installation
+mysql -u -root -p # log in to mysql
+
+# Deploy to EC2
+# in webbrowser, type in:
+<public DNS of the ec2>:8080/manager/html
+# access to UI to deploy on ec2
