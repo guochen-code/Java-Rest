@@ -30,14 +30,14 @@ public class NumberMagic {
             return new ArrayList<>();
         }
  
-        List<Integer> factors = new ArrayList<>();
+        List<Integer> factors = new ArrayList<>();//////////////////////////////////////////////////////////////////////////////// empty list
  
         // Start from 1 and iterate up to the given number.
         // Check if the number is divisible by the current iterator value (i.e., if it's a factor).
         for (int i = 1; i <= number; i++) {
             if (number % i == 0) {
                 // If it is, add it to the factors list.
-                factors.add(i);
+                factors.add(i);//////////////////////////////////////////////////////////////////////////////// == append list
             }
         }
  
