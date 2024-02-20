@@ -59,4 +59,83 @@ public class ArrayMagic {
         return num2;
 
     }
+
+    public boolean isSorted(int[] array) {
+ 
+        // Edge case: If the array length is 1 or less, it is technically sorted, so return true.
+        if (array.length <= 1) {
+            return true;
+        }
+ 
+        // Iterate over the array, starting from the second element
+        for (int i = 1; i < array.length; i++) {
+            // If the current element is less than the previous one, the array is not sorted, so return false.
+            if (array[i] < array[i - 1]) {
+                return false;
+            }
+        }
+ 
+        // If the method has not returned yet, that means no elements were out of order, so the array is sorted.
+        return true;
+    }
+
+    /**
+     * This method reverses an array.
+     * 
+     * @param array the array to reverse
+     * @return a new array with elements in reverse order
+     */
+    public int[] reverseArray(int[] array) {
+ 
+        // Edge case: If the array is empty or contains only one element, return the array as is.
+        if (array.length <= 1) {
+            return array;
+        }
+ 
+        // Initialize pointers at the start and end of the array.
+        int start = 0;
+        int end = array.length - 1;
+ 
+        // Create a new array to store the reversed elements.
+        int[] reversedArray = new int[array.length];
+ 
+        // Traverse the array from both ends towards the middle.
+        while (start <= end) {
+            // Swap the elements at the start and end indices.
+            reversedArray[start] = array[end];
+            reversedArray[end] = array[start];
+ 
+            // Move the pointers towards the middle.
+            start++;
+            end--;
+        }
+ 
+        return reversedArray;
+    }
+
+    public int[] reverseArray(int[] array) {
+    // Edge case: If the array is empty or contains only one element, return the array as is.
+    if (array.length <= 1) {
+        return array;
+    }
+
+    // Initialize pointers at the start and end of the array.
+    int start = 0;
+    int end = array.length - 1;
+
+    // Traverse the array from both ends towards the middle.
+    while (start < end) {
+        // Swap the elements at the start and end indices.
+        int temp = array[start];
+        array[start] = array[end];
+        array[end] = temp;
+
+        // Move the pointers towards the middle.
+        start++;
+        end--;
+    }
+
+    return array;
+}
+
 }
