@@ -27,17 +27,17 @@ public class NumberMagic {
         // Edge case: If the number is 0 or negative, return an empty list.
         // Factorization is usually defined for positive integers.
         if (number <= 0) {
-            return new ArrayList<>();
+            return new ArrayList<>();//////////////////////////////////////////////////////////////////////////////// empty list
         }
  
-        List<Integer> factors = new ArrayList<>();//////////////////////////////////////////////////////////////////////////////// empty list
+        List<Integer> factors = new ArrayList<>();//////////////////////////////////////////////////////////////////////////////// create list
  
         // Start from 1 and iterate up to the given number.
         // Check if the number is divisible by the current iterator value (i.e., if it's a factor).
         for (int i = 1; i <= number; i++) {
             if (number % i == 0) {
                 // If it is, add it to the factors list.
-                factors.add(i);//////////////////////////////////////////////////////////////////////////////// == append list
+                factors.add(i);//////////////////////////////////////////////////////////////////////////////// == add element
             }
         }
  
