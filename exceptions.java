@@ -12,3 +12,10 @@ try {
   ex.printStackTrace();
 }
 
+Unchecked exceptions in Java include RuntimeException and its sub-classes. 
+Unlike checked exceptions, unchecked exceptions are not mandatory to be explicitly handled or declared by the programmer.
+
+The interface that a resource must implement to be compatible with the try-with-resources statement is AutoCloseable. 
+The AutoCloseable interface provides a single method, close(), 
+which is invoked automatically by the try-with-resources statement to release or close the resource when it is no longer needed.
+
