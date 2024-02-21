@@ -121,4 +121,26 @@ Map<String,Integer> hashmap = new HashMap<>(map);
 hashmap.put("F",5) // return null but it is added // can also use this to change value
 
 // application
+String str = "......"
+char [] characters = str.toCharArray();
+for (char character:characters){
+  Integer integer = hashmap.get(character);
+  if (integer==null){
+    hashmap.put(character,1)
+  }else{
+    hashmap.put(character,integer+1);
+  }
+}
+
+String [] words = str.split(" ");
+
+Map<String,Integer> hashmap = new HashMap<>();
+Map<Character,Integer> hashmap = new HashMap<>();
+********************************************************************************************************************************************************************** treeMap in depth
+treemap.higherKey("B") // >B, returns key, can use key not in the keySet
+treemap.ceilingKey("B") // >=B
+lowerKey(), floorKey(), firstEnty(), lastEntry()
+tree.subMap("C","Y")
+tree.subMap("C",true,"Y",true)
+
 
