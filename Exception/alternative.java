@@ -1,5 +1,12 @@
 if (player==null) throw new UserNotFoundException("id: "+id);
 
+(1) Exception Class
+(2) Exception Handler Class
+(3) ErrorMessage Class
+
+* do not have ErrorMessages enum, because it is hard coded: ("id: "+id)
+* it is still working without: extends ResponseEntityExceptionHandler
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @ResponseStatus(code=HttpStatus.NOT_FOUND) // 404 (before is 500) // do this convert class to ResponseEntity
