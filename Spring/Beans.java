@@ -1,9 +1,12 @@
-(1) launch a spring context
-(2) confiture the things that we want spring to manage - @Configuration @Bean
+Spring Bean is any Java object that is managed by Spring Framework. Spring uses IOC Container (Bean Factory or Application Context) to manage these objects.
+
+(1) launch a spring context (*** in main file)
+(2) confiture the things that we want spring to manage - @Configuration @Bean (*** in configuration file)
 (3) retrieve beans managed by spring
 
-var context = new AnnotationConfigApplicationContext(HelloWorldConfiguration.class);
-System.out.println(context.getBean("name");  --> Ravi
+var context = new AnnotationConfigApplicationContext(HelloWorldConfiguration.class); 
+// try(var context = new AnnotationConfigApplicationContext(HelloWorldConfiguration.class)){context.getBean("name");} //avoid context leak
+System.out.println(context.getBean("name"));  --> Ravi
 
 
 record Address(String firstLine, String city){}; //like dataclass
