@@ -31,3 +31,27 @@ public Person person2Methodcall(){
 public Person person3Parameters(String name, int age, Address address3) {
   return new Person(name, age, address3);
 }
+
+***********************************************************************************************************************************************
+// print out all beans
+Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out.println);
+
+// primary bean
+@Bean(name="address2")
+@primary
+public String address() {
+    return new Address("xx","yy");
+  }
+
+@Bean(name="address2")
+@Qualifier("address3qualifier")
+public String address() {
+    return new Address("xx","yy");
+  }
+
+@Bean
+public Person person3Parameters(String name, int age, @Qualifier("address3qualifier") Address address) {
+  return new Person(name, age, address3);
+}
+
+System.out.println(context.getBean("address3qualifier"));
