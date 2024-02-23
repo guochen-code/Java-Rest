@@ -58,3 +58,36 @@ public Person person3Parameters(String name, int age, @Qualifier("address3qualif
 }
 
 System.out.println(context.getBean("address3qualifier"));
+
+*********************************************************************************************************************************************** components like beans
+
+@Component
+@Primary
+public class MarioGame implements GamingConsole{}
+
+@Component
+public class PacmanGame implements GamingConsole{}
+
+@Component
+@Qualifier("SuperContraGameQualifier")
+public class SuperContraGame implements GamingConsole{}
+
+// autowiring using constructor injection:
+public class GameRunner {
+  private GamingConsole game;
+
+  public GameRunner(GamingConsole game) { //constructor injection for autowiring
+    this.game = game;
+  }
+
+// how to use Qualifier for autowiring
+public class GameRunner {
+  private GamingConsole game;
+
+  public GameRunner(@Qualifier("SuperContraGameQualifier") GamingConsole game) { //constructor injection for autowiring
+    this.game = game;
+  }  
+
+
+- just @Autowired: give me primary object
+- @Autowired + @Qualifier: only want specific object
