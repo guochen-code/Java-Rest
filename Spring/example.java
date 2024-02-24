@@ -44,7 +44,7 @@ public class MongoDbDataService implements DataService{
 }
 
 
-//script-005 - 
+//script-005 - business logics
 @Component
 public class BusinessCalculationService {
 	
@@ -55,3 +55,9 @@ public class BusinessCalculationService {
 		return Arrays.stream(dataservice.retrieveData()).max().orElse(0);
 	}
 }
+
+// @Component - generic annotation applicable for any class
+// specializations of @Compoenent
+- @Service - indicates that an annotated class has business logic;
+- @Controller - used to define controllers in your web applications and REST API;
+- @Repository - retrieve and or manipulate data in a database
