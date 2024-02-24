@@ -12,5 +12,6 @@ static public int getCount() {
 }
 }
 
-// count is shared variable across all instances of this class
-// you can call static method directly using class object
+// count is shared variable across all instances of this class.
+// you can call static method directly using class object.
+// static method can also be called from instance, not recommended.
