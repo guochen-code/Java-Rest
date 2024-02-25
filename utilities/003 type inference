@@ -1,0 +1,14 @@
+List<String> names1 = List.of("n1","n2");
+List<String> names2 = List.of("n3","n4");
+List<List<Sring>> names = List.of(names1,names2); // complex syntax for list of list
+
+// use type inference
+var names = List.of(names1,names2);
+
+// cannot assign null to var 
+var abc = null; // not allowed
+
+// type inference is not applicable for member variable
+
+var filter = List.of("n1","n2").stream().filter(s->s.length()<5);
+filter.Foreach(System.out::println);
